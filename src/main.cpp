@@ -9,7 +9,9 @@ enum  class State{
     EMPTY,
     OBSTACLE,
     PATH,
-    CLOSED
+    CLOSED,
+    START,
+    FINISH
 };
 
 void ReadFromFile(vector<vector<State>>& board);
@@ -26,7 +28,7 @@ int main(int argc, char *argv[])
 
 
     int start[2]={0,0};
-    int goal[2]={4,5};
+    int goal[2]={4,3};
 
     Search(board, start,  goal);
 
@@ -74,14 +76,14 @@ void ReadFromFile(vector<vector<State>>& board)
  */
 string CellString(State cell)
 {
-    if(cell == State::EMPTY)
-        return "0 ";
-    else if (cell == State::PATH)
-        return "*";
-    else if(cell == State::CLOSED)
-        return "$";
-    else
-        return "# ";
+
+     switch(cell) {
+        case State::OBSTACLE: return "⛰   ";
+        case State::PATH: return "🚗   ";
+        case State::START: return "🚦   ";
+        case State::FINISH: return "🏁   ";
+        default: return "0   "; 
+     }
 
 };
 
@@ -228,6 +230,8 @@ vector<vector<State>> Search(vector<vector<State>>& grid, int start[2], int goal
         // return here if reached goal point
         if(x == x2 && y == y2)
         {
+            grid[x1][y1] = State::START;
+            grid[x][y] = State::FINISH;
             return grid;
         }
 
