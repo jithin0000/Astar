@@ -3,14 +3,14 @@ __Astar Using C++__
 #### Search Algorithm ####
 
 Search(grid, initial_point, gol_point):
-  1. Initialize list for open nodes
-  2. Initialize a starting node with the following:
+  1 Initialize list for open nodes
+  2 Initialize a starting node with the following:
       * x and y values given by the initial_point
       * g=0 where g is cost for each move , it will increment by each step
       * h given by heuristic functon ( Here Euclidian distance )
-  3. Add new node to list of open nodes
+  3 Add new node to list of open nodes
 
-  4. While the list of open nodes is nonEmpty:
+  4 While the list of open nodes is nonEmpty:
   
       1 Sort the open list by f-value
       2 Pop the optimal cell ( Called current cell )

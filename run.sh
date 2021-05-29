@@ -7,12 +7,12 @@ if [[ -d 'build' ]]; then
     fi
     cd build && cmake build ..
     make
-    ./types
+    ./astar
 else
     mkdir build
     cd build && cmake build ..
     make
-    ./types
+    ./astar
     
 fi
 
